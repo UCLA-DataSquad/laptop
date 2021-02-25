@@ -1,0 +1,92 @@
+# Adding R package location to thaw space
+
+RLIBS_DIR="/Volumes/workspace/rlibs"
+WORKSPACE="/Volumes/workspace"
+
+if [ ! -d "$WORKSPACE" ]; then
+  fancy_echo "Creating workspace directory in /Volumes"
+  sudo mkdir $WORKSPACE
+  sudo chown -R "$LOGNAME:admin" "$WORKSPACE"
+fi
+
+if ! command -v RScript >/dev/null; then
+  fancy_echo "Setting up R packages dir"
+  sudo mkdir $RLIBS_DIR
+  sudo chown -R "$LOGNAME:admin" "$RLIBS_DIR"
+  echo 'R_LIBS="/Volumes/workspace/rlibs"' > ~/.Renviron
+fi
+
+if [ ! -d "$RLIBS_DIR" ]; then
+  fancy_echo "Setting up R packages dir"
+  sudo mkdir "$RLIBS_DIR"
+  sudo chown -R "$LOGNAME:admin" "$RLIBS_DIR"
+  echo 'R_LIBS="/Volumes/workspace/rlibs"' > ~/.Renviron
+fi
+
+fancy_echo "Updating Homebrew formulae ..."
+brew bundle --file=- <<EOF
+tap "homebrew/services"
+tap "homebrew/science"
+tap "caskroom/cask"
+tap "buo/cask-upgrade"
+tap "caskroom/versions"
+
+# Unix
+brew "rlwrap"
+brew "pandoc"
+brew "tree"
+brew "jq"
+brew "wget"
+# Databases
+brew "sqlite"
+#R
+brew "r"
+cask "rstudio"
+#apps
+#cask "google-chrome"
+cask "atom"
+cask "google-refine"
+#cask "adobe-acrobat"
+#cask "microsoft-office"
+cask "iterm2"
+#cask "mactex"
+cask "java6"
+EOF
+
+## Install anaconda if not already installed
+if ! command -v conda >/dev/null; then
+
+    curl -O -s https://repo.continuum.io/archive/Anaconda3-4.2.0-MacOSX-x86_64.sh
+    #use -b to say yes to all interaction & -p prefix to put anaconda3 install in /volumne
+    sudo bash Anaconda3-4.2.0-MacOSX-x86_64.sh -b -p "/Volumes/workspace/anaconda3"
+    #need to add path to .zshrc.local so conda will be available on boot
+    append_to_zshrc 'export PATH="/Volumes/workspace/anaconda3/bin:$PATH"'
+    #need to export path at console b/c we use conda in this session below
+    sudo chown -R "$LOGNAME:admin" "/volumes/workspace/anaconda3"
+    export PATH="/Volumes/workspace/anaconda3/bin:$PATH"
+fi
+
+conda install -y csvkit
+conda update -y conda
+conda update -y anaconda
+
+fancy_echo "Updating Brew Casks"
+
+brew cu -a
+
+fancy_echo "Cleaning up old Homebrew formulae ..."
+brew cleanup
+brew cask cleanup
+
+if [ ! -r "$HOME/.rcrc" ]; then
+  fancy_echo "Setting up dotfiles"
+  git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
+  env RCRC="$HOME/dotfiles/rcrc" rcup
+fi
+
+if [ -r "$HOME/.rcrc" ]; then
+  fancy_echo "Updating dotfiles ..."
+  rcup
+fi
+
+fancy_echo "All done."
