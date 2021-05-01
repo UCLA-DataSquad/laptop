@@ -110,10 +110,10 @@ fi
 fancy_echo "Updating Homebrew formulae ..."
 brew update --force # https://github.com/Homebrew/brew/issues/1151
 brew bundle --file=- <<EOF
-tap "thoughtbot/formulae"
+#tap "thoughtbot/formulae"
 tap "homebrew/services"
 tap "universal-ctags/universal-ctags"
-tap "heroku/brew"
+#tap "heroku/brew"
 
 # Unix
 brew "universal-ctags", args: ["HEAD"]
@@ -128,8 +128,8 @@ brew "watchman"
 brew "zsh"
 
 # Heroku
-brew "heroku/brew/heroku"
-brew "parity"
+#brew "heroku/brew/heroku"
+#brew "parity"
 
 # GitHub
 brew "gh"
@@ -148,6 +148,7 @@ brew "postgres", restart_service: :changed
 brew "redis", restart_service: :changed
 EOF
 
+: '
 fancy_echo "Update heroku binary ..."
 brew unlink heroku
 brew link --force heroku
@@ -195,6 +196,7 @@ bundle config --global jobs $((number_of_cores - 1))
 fancy_echo "Installing latest Node ..."
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 install_asdf_language "nodejs"
+:'
 
 if [ -f "$HOME/.laptop.local" ]; then
   fancy_echo "Running your customizations from ~/.laptop.local ..."
