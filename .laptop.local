@@ -1,6 +1,7 @@
 #TODO - Remove cask tools & no need for thaw space
 # Adding R package location to thaw space
 # don't need to set directories below as
+# we aren't using deepfreeze 
 
 RLIBS_DIR="/Volumes/workspace/rlibs"
 WORKSPACE="/Volumes/workspace"
