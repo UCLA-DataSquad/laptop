@@ -1,6 +1,6 @@
 name: Smoke Test CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Execute full install
-      run:  ./setup.sh
+      run:  ./mac
