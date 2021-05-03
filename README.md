@@ -85,6 +85,14 @@ Unix tools:
 * [Tmux] for saving project state and switching between projects
 * [Watchman] for watching for filesystem events
 * [Zsh] as your shell
+* [rlwrap] readline wrapper
+* [pandoc] markup converter
+* [tree]  lists contents of directory in a tree like structure
+* [jq] JSON parser 
+* [wget] network downloader 
+* [rclone] cloud storage data synch 
+* [awscli] amazon command line 
+* [docker] cli for containers 
 
 [Universal Ctags]: https://ctags.io/
 [Git]: https://git-scm.com/
