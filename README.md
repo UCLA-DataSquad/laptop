@@ -1,3 +1,5 @@
+![example workflow](https://github.com/UCLA-DataSquad/laptop/actions/workflows/smoke.yml/badge.svg)
+
 Laptop
 ======
 
