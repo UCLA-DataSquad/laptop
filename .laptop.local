@@ -2,6 +2,14 @@
 # Adding R package location to thaw space
 # don't need to set directories below as
 # we aren't using deepfreeze 
+
+fancy_echo() {
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\\n$fmt\\n" "$@"
+}
+
 : '
 RLIBS_DIR="/Volumes/workspace/rlibs"
 WORKSPACE="/Volumes/workspace"
@@ -36,14 +44,19 @@ brew "tree"
 brew "jq"
 brew "wget"
 brew "rclone"
+brew "awcli"
+brew "tree"
+brew "docker"
 
 # Databases
 brew "sqlite"
 #R
 brew "r"
 #apps
-cask "openrefine"
-cask "iterm2"
+brew "openrefine"
+brew "iterm2"
+brew "zoom"
+# brew "anaconda"
 EOF
 
 ## Install anaconda if not already installed
