@@ -85,15 +85,14 @@ Unix tools:
 * [Tmux] for saving project state and switching between projects
 * [Watchman] for watching for filesystem events
 * [Zsh] as your shell
-
-[Universal Ctags]: https://ctags.io/
-[Git]: https://git-scm.com/
-[OpenSSL]: https://www.openssl.org/
-[RCM]: https://github.com/thoughtbot/rcm
-[The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
-[Tmux]: http://tmux.github.io/
-[Watchman]: https://facebook.github.io/watchman/
-[Zsh]: http://www.zsh.org/
+* [Universal Ctags]: https://ctags.io/
+* [Git]: https://git-scm.com/
+* [OpenSSL]: https://www.openssl.org/
+* [RCM]: https://github.com/thoughtbot/rcm
+* [The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
+* [Tmux]: http://tmux.github.io/
+* [Watchman]: https://facebook.github.io/watchman/
+* [Zsh]: http://www.zsh.org/
 
 Heroku tools:
 
