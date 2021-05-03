@@ -1,13 +1,14 @@
 ![example workflow](https://github.com/UCLA-DataSquad/laptop/actions/workflows/smoke.yml/badge.svg)
 
-Laptop
+DSC - DataSquad Laptop Setup (for MacBook)
 ======
 
-Laptop is a script to set up a macOS laptop for web and mobile development.
+Laptop is a script to set up a macOS laptop for data science tools.
 
-It can be run multiple times on the same machine safely.
-It installs, upgrades, or skips packages
+* It can be run multiple times on the same machine safely.
+* It installs, upgrades, or skips packages
 based on what is already installed on the machine.
+
 
 Requirements
 ------------
@@ -25,7 +26,7 @@ We support:
 Older versions may work but aren't regularly tested.
 Bug reports for older versions are welcome.
 
-Install
+To Install
 -------
 
 Download the script:
