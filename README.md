@@ -3,7 +3,7 @@
 DSC - DataSquad Laptop Setup (for MacBook)
 ======
 
-Laptop is a script to set up a macOS laptop for data science tools.
+Laptop is a script to set up a macOS laptop for data science tools for DSC.
 
 * It can be run multiple times on the same machine safely.
 * It installs, upgrades, or skips packages
