@@ -1,11 +1,14 @@
-Laptop
+![example workflow](https://github.com/UCLA-DataSquad/laptop/actions/workflows/smoke.yml/badge.svg)
+
+DSC - DataSquad Laptop Setup (for MacBook)
 ======
 
-Laptop is a script to set up a macOS laptop for web and mobile development.
+Laptop is a script to set up a macOS laptop for data science tools for DSC.
 
-It can be run multiple times on the same machine safely.
-It installs, upgrades, or skips packages
+* It can be run multiple times on the same machine safely.
+* It installs, upgrades, or skips packages
 based on what is already installed on the machine.
+
 
 Requirements
 ------------
@@ -23,7 +26,7 @@ We support:
 Older versions may work but aren't regularly tested.
 Bug reports for older versions are welcome.
 
-Install
+To Install
 -------
 
 Download the script:
@@ -82,6 +85,14 @@ Unix tools:
 * [Tmux] for saving project state and switching between projects
 * [Watchman] for watching for filesystem events
 * [Zsh] as your shell
+* [rlwrap] readline wrapper
+* [pandoc] markup converter
+* [tree]  lists contents of directory in a tree like structure
+* [jq] JSON parser 
+* [wget] network downloader 
+* [rclone] cloud storage data synch 
+* [awscli] amazon command line 
+* [docker] cli for containers 
 
 [Universal Ctags]: https://ctags.io/
 [Git]: https://git-scm.com/
