@@ -114,6 +114,9 @@ brew bundle --file=- <<EOF
 tap "homebrew/services"
 tap "universal-ctags/universal-ctags"
 #tap "heroku/brew"
+tap "homebrew/cask"
+tap "buo/cask-upgrade"
+brew "mas"
 
 # Unix
 brew "universal-ctags", args: ["HEAD"]

@@ -112,8 +112,8 @@ Image tools:
 
 Languages: 
 
-* [R] - 
-* [Anaconda Python] - Python distribution for scientific computing
+* [R] - Base r installed via homebrew 
+* [Anaconda Python] - Python distribution for scientific computing, this is installed using the bash installer 
 
 Databases:
 
