@@ -3,7 +3,7 @@
 DSC - DataSquad Laptop Setup (for MacBook)
 ======
 
-Laptop is a script to set up a macOS laptop for data science tools for DSC.
+Laptop is a script to set up a macOS laptop for data science tools for DSC staff.
 
 * It can be run multiple times on the same machine safely.
 * It installs, upgrades, or skips packages
@@ -23,7 +23,7 @@ We support:
 * macOS Mojave (10.14)
 * macOS Catalina (10.15)
 
-Older versions may work but aren't regularly tested.
+Older versions may work but aren't tested.
 Bug reports for older versions are welcome.
 
 To Install
@@ -101,16 +101,6 @@ Unix tools:
 [The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
 [Tmux]: http://tmux.github.io/
 [Watchman]: https://facebook.github.io/watchman/
-[Zsh]: http://www.zsh.org/
-
-Heroku tools:
-
-* [Heroku CLI] and [Parity] for interacting with the Heroku API
-
-[Heroku CLI]: https://devcenter.heroku.com/articles/heroku-cli
-[Parity]: https://github.com/thoughtbot/parity
-
-GitHub tools:
 
 * [GitHub CLI] for interacting with the GitHub API
 
@@ -120,21 +110,10 @@ Image tools:
 
 * [ImageMagick] for cropping and resizing images
 
-Programming languages, package managers, and configuration:
+Languages: 
 
-* [asdf-vm] for managing programming language versions
-* [Bundler] for managing Ruby libraries
-* [Node.js] and [npm], for running apps and installing JavaScript packages
-* [Ruby] stable for writing general-purpose code
-* [Yarn] for managing JavaScript packages
-
-[Bundler]: http://bundler.io/
-[ImageMagick]: http://www.imagemagick.org/
-[Node.js]: http://nodejs.org/
-[npm]: https://www.npmjs.org/
-[asdf-vm]: https://github.com/asdf-vm/asdf
-[Ruby]: https://www.ruby-lang.org/en/
-[Yarn]: https://yarnpkg.com/en/
+* [R] - 
+* [Anaconda Python] - Python distribution for scientific computing
 
 Databases:
 
@@ -144,57 +123,11 @@ Databases:
 [Postgres]: http://www.postgresql.org/
 [Redis]: http://redis.io/
 
+
+
 It should take less than 15 minutes to install (depends on your machine).
 
-Customize in `~/.laptop.local`
-------------------------------
 
-Your `~/.laptop.local` is run at the end of the Laptop script.
-Put your customizations there.
-For example:
-
-```sh
-#!/bin/sh
-
-brew bundle --file=- <<EOF
-brew "Caskroom/cask/dockertoolbox"
-brew "go"
-brew "ngrok"
-brew "watch"
-EOF
-
-default_docker_machine() {
-  docker-machine ls | grep -Fq "default"
-}
-
-if ! default_docker_machine; then
-  docker-machine create --driver virtualbox default
-fi
-
-default_docker_machine_running() {
-  default_docker_machine | grep -Fq "Running"
-}
-
-if ! default_docker_machine_running; then
-  docker-machine start default
-fi
-
-fancy_echo "Cleaning up old Homebrew formulae ..."
-brew cleanup
-brew cask cleanup
-
-if [ -r "$HOME/.rcrc" ]; then
-  fancy_echo "Updating dotfiles ..."
-  rcup
-fi
-```
-
-Write your customizations such that they can be run safely more than once.
-See the `mac` script for examples.
-
-Laptop functions such as `fancy_echo` and
-`gem_install_or_update`
-can be used in your `~/.laptop.local`.
 
 See the [wiki](https://github.com/thoughtbot/laptop/wiki)
 for more customization examples.
@@ -202,9 +135,9 @@ for more customization examples.
 Contributing
 ------------
 
-Edit the `mac` file.
-Document in the `README.md` file.
-Follow shell style guidelines by using [ShellCheck] and [Syntastic].
+1. Edit the `mac` file.
+2. Document in the `README.md` file.
+3. Follow shell style guidelines by using [ShellCheck] and [Syntastic].
 
 ```sh
 brew install shellcheck
@@ -212,6 +145,8 @@ brew install shellcheck
 
 [ShellCheck]: http://www.shellcheck.net/about.html
 [Syntastic]: https://github.com/scrooloose/syntastic
+
+4. Check out the GitHub Actions tab to make sure the build runs without error.
 
 Thank you, [contributors]!
 
@@ -231,17 +166,3 @@ and may be redistributed under the terms specified in the [LICENSE] file.
 
 [LICENSE]: LICENSE
 
-About thoughtbot
-----------------
-
-![thoughtbot](https://thoughtbot.com/brand_assets/93:44.svg)
-
-Laptop is maintained and funded by thoughtbot, inc.
-The names and logos for thoughtbot are trademarks of thoughtbot, inc.
-
-We are passionate about open source software.
-See [our other projects][community].
-We are [available for hire][hire].
-
-[community]: https://thoughtbot.com/community?utm_source=github
-[hire]: https://thoughtbot.com?utm_source=github

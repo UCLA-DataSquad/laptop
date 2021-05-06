@@ -154,7 +154,7 @@ brew "tree"
 brew "jq"
 brew "wget"
 brew "rclone"
-brew "awcli"
+brew "awscli"
 brew "tree"
 brew "docker"
 
