@@ -167,7 +167,7 @@ brew "r"
 #apps
 brew "openrefine"
 brew "iterm2"
-brew "zoom"
+brew "zoomus"
 EOF
 
 ## Install anaconda if not already installed
