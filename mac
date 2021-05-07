@@ -113,9 +113,12 @@ brew bundle --file=- <<EOF
 #tap "thoughtbot/formulae"
 tap "homebrew/services"
 tap "universal-ctags/universal-ctags"
-#tap "heroku/brew"
 tap "homebrew/cask"
 tap "buo/cask-upgrade"
+tap "homebrew/core"
+tap "homebrew/bundle"
+tap "buo/cask-upgrade"
+tap "homebrew/cask-fonts"
 brew "mas"
 
 # Unix
