@@ -166,7 +166,7 @@ cask "openrefine"
 cask "iterm2"
 cask "zoom"
 cask "firefox"
-cask "anaconda"
+#cask "anaconda"
 EOF
 
 #conda install -y csvkit
