@@ -168,8 +168,10 @@ cask "openrefine"
 cask "iterm2"
 cask "zoom"
 cask "firefox"
+cask "anaconda"
 EOF
 
+:'
 ## Install anaconda if not already installed
 if ! command -v conda >/dev/null; then
 
@@ -180,6 +182,7 @@ if ! command -v conda >/dev/null; then
     append_to_zshrc 'export PATH="~/anaconda3/bin:$PATH"'
     export PATH="~/anaconda3/bin:$PATH"
 fi
+:'
 
 conda install -y csvkit
 conda update -y conda
