@@ -133,10 +133,6 @@ brew "vim"
 brew "watchman"
 brew "zsh"
 
-# Heroku
-#brew "heroku/brew/heroku"
-#brew "parity"
-
 # GitHub
 brew "gh"
 
@@ -168,9 +164,10 @@ brew "docker"
 brew "r"
 
 #apps
-brew "openrefine", args: ["cask"] 
-brew "iterm2"
-brew "zoomus"
+cask "openrefine"
+cask "iterm2"
+cask "zoomus"
+cask "firefox"
 EOF
 
 ## Install anaconda if not already installed
