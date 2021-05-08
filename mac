@@ -147,7 +147,6 @@ cask "gpg-suite"
 
 # Databases
 brew "postgres", restart_service: :changed
-brew "redis", restart_service: :changed
 
 # Unix
 brew "rlwrap"
@@ -156,7 +155,6 @@ brew "tree"
 brew "jq"
 brew "wget"
 brew "rclone"
-#brew "awscli"
 brew "tree"
 brew "docker"
 
@@ -184,9 +182,9 @@ if ! command -v conda >/dev/null; then
 fi
 :'
 
-conda install -y csvkit
-conda update -y conda
-conda update -y anaconda
+#conda install -y csvkit
+#conda update -y conda
+#conda update -y anaconda
 
 fancy_echo "Updating Brew Casks"
 
