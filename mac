@@ -166,7 +166,7 @@ brew "r"
 #apps
 cask "openrefine"
 cask "iterm2"
-cask "zoomus"
+cask "zoom"
 cask "firefox"
 EOF
 
