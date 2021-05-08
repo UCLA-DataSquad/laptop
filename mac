@@ -168,7 +168,7 @@ brew "docker"
 brew "r"
 
 #apps
-brew "openrefine"
+brew "openrefine", args: ["cask"] 
 brew "iterm2"
 brew "zoomus"
 EOF
