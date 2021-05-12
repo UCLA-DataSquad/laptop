@@ -162,10 +162,10 @@ brew "docker"
 brew "r"
 
 #apps
-cask "openrefine"
-cask "iterm2"
-cask "zoom"
-cask "firefox"
+#cask "openrefine"
+#cask "iterm2"
+#cask "zoom"
+#cask "firefox"
 #cask "anaconda"
 EOF
 
@@ -175,7 +175,7 @@ EOF
 
 fancy_echo "Updating Brew Casks"
 
-brew cu -a
+#brew cu -a
 
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
