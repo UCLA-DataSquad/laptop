@@ -3,7 +3,7 @@
 DSC - DataSquad Laptop Setup (for MacBook)
 ======
 
-Laptop is a script to set up a macOS laptop for data science tools for DSC staff.
+**Laptop** is a script to set up a macOS laptop for data science tools for DSC staff & Data Squad.
 
 * It can be run multiple times on the same machine safely.
 * It installs, upgrades, or skips packages
@@ -80,7 +80,6 @@ Unix tools:
 * [Universal Ctags] for indexing files for vim tab completion
 * [Git] for version control
 * [OpenSSL] for Transport Layer Security (TLS)
-* [RCM] for managing company and personal dotfiles
 * [The Silver Searcher] for finding things in files
 * [Tmux] for saving project state and switching between projects
 * [Watchman] for watching for filesystem events
@@ -101,6 +100,14 @@ Unix tools:
 [The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
 [Tmux]: http://tmux.github.io/
 [Watchman]: https://facebook.github.io/watchman/
+[rlwrap]: https://linux.die.net/man/1/rlwrap
+[pandoc]: https://pandoc.org
+[tree]: https://linux.die.net/man/1/tree
+[jq]: https://stedolan.github.io/jq/
+[wget]: https://www.geeksforgeeks.org/wget-command-in-linux-unix/
+[rclone]: https://rclone.org
+[awscli]: https://aws.amazon.com/cli/
+[docker]: https://docs.docker.com/engine/reference/commandline/cli/
 
 * [GitHub CLI] for interacting with the GitHub API
 
