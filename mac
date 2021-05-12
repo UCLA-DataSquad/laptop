@@ -180,10 +180,10 @@ fancy_echo "Updating Brew Casks"
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
 
-:'
-if [ -f ".laptop.local" ]; then
-  fancy_echo "Running your customizations from ~/.laptop.local ..."
-  # shellcheck disable=SC1090
-  sh ".laptop.local"
-fi
-:'
+# uncomment if you want to create and run your own local additions to this script
+#if [ -f ".laptop.local" ]; then
+#  fancy_echo "Running your customizations from ~/.laptop.local ..."
+#  # shellcheck disable=SC1090
+#  sh ".laptop.local"
+#fi
+
