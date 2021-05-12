@@ -47,6 +47,8 @@ Execute the downloaded script:
 sh mac 2>&1 | tee ~/laptop.log
 ```
 
+You'll need to use your laptop password. If it's the first time running this script, it will trigger an installation of Xcode and you will need to hit return. 
+
 Optionally, review the log:
 
 ```sh
