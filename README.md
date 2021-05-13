@@ -13,7 +13,13 @@ based on what is already installed on the machine.
 Requirements
 ------------
 
-We support:
+This script supports:
+
+* macOS Big Sur (11.2) - Apple Silicon 
+
+To make backward compatable we need to add some logic to test for architecture. 
+
+NOTE: Homebrew installs to `/opt/homebrew` on Apple Silicon rather than `/usr/local` so `HOMEBREW_PREFIX` probably needs to be dependant on the architecture. see: <https://github.com/thoughtbot/laptop/issues/589>
 
 * macOS Mavericks (10.9)
 * macOS Yosemite (10.10)
