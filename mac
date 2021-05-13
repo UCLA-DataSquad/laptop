@@ -158,7 +158,7 @@ brew "tree"
 brew "docker"
 
 #R
-brew "r"
+#brew "r"
 
 #apps
 #cask "openrefine"
