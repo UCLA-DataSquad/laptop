@@ -99,7 +99,7 @@ if ! command -v brew >/dev/null; then
 
     # shellcheck disable=SC2016
     #append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
-    append_to_zshrc 'export PATH="/opt/homebrew/bin:$PATH)"' 1
+    append_to_zshrc 'export PATH="/opt/homebrew/bin:$PATH"' 1
 
     export PATH="/opt/homebrew/bin/bin:$PATH"
 fi
