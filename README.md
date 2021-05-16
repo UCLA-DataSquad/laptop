@@ -38,7 +38,7 @@ To Install
 Download the script:
 
 ```sh
-curl --remote-name https://github.com/UCLA-DataSquad/laptop/edit/master/mac
+curl --remote-name https://raw.githubusercontent.com/UCLA-DataSquad/laptop/master/mac
 ```
 
 Review the script (avoid running scripts you haven't read!):
