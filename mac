@@ -122,7 +122,7 @@ tap "homebrew/core"
 tap "homebrew/bundle"
 tap "buo/cask-upgrade"
 tap "homebrew/cask-fonts"
-brew "mas"
+#brew "mas"
 
 # Unix
 brew "universal-ctags", args: ["HEAD"]
@@ -149,7 +149,7 @@ brew "imagemagick"
 # Programming language prerequisites and package managers
 brew "libyaml" # should come after openssl
 brew "coreutils"
-brew "yarn"
+#brew "yarn"
 
 # Unix
 brew "rlwrap"
@@ -165,11 +165,10 @@ brew "docker"
 #brew "r" 
 
 #apps
-#cask "openrefine"
+cask "openrefine"
 cask "iterm2"
-#cask "zoom"
 cask "firefox"
-#cask "anaconda"
+cask "google-chrome"
 EOF
 
 #conda install -y csvkit
