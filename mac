@@ -166,10 +166,10 @@ brew "docker"
 
 #apps
 #cask "openrefine"
-#cask "iterm2"
-#cask "zoom"
-#cask "firefox"
-#cask "anaconda"
+cask "iterm2"
+cask "zoom"
+cask "firefox"
+cask "anaconda"
 EOF
 
 #conda install -y csvkit
