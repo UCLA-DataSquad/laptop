@@ -189,7 +189,7 @@ fi
 
 #conda install -y csvkit
 conda update -y conda
-conda update -y anaconda
+#conda update -y anaconda
 
 if [ -d "/Volumes/Macintosh HD/Applications/RStudio.app" ]; then
     #install RStudio & use tool to mount and move .app to /Volumes/Macintosh HD/Applications/
