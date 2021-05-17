@@ -191,6 +191,12 @@ fi
 conda update -y conda
 conda update -y anaconda
 
+if [ -d "/Volumes/Macintosh HD/Applications/RStudio.app" ]; then
+    #install RStudio & use tool to mount and move .app to /Volumes/Macintosh HD/Applications/
+    # install nightly build to match brew path 
+    echo "yes"
+fi
+
 # uncomment if you want to create and run your own local additions to this script
 #if [ -f ".laptop.local" ]; then
 #  fancy_echo "Running your customizations from ~/.laptop.local ..."
