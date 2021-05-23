@@ -1,4 +1,4 @@
-![example workflow](https://github.com/UCLA-DataSquad/laptop/actions/workflows/smoke.yml/badge.svg)
+[![Smoke Test CI](https://github.com/UCLA-DataSquad/laptop/actions/workflows/smoke.yml/badge.svg)](https://github.com/UCLA-DataSquad/laptop/actions/workflows/smoke.yml)
 
 DSC - DataSquad Laptop Setup (for MacBook)
 ======
