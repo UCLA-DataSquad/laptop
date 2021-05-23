@@ -138,6 +138,14 @@ brew "gcc"
 brew "xz" 
 brew "libxt" 
 brew "cairo"
+brew "rlwrap"
+#brew "pandoc" 
+brew "tree"
+brew "jq"
+brew "wget"
+brew "rclone"
+brew "tree"
+brew "docker"
 
 # GitHub
 brew "gh"
@@ -149,19 +157,9 @@ brew "imagemagick"
 brew "libyaml" # should come after openssl
 brew "coreutils"
 
-# Unix
-brew "rlwrap"
-#brew "pandoc" 
-brew "tree"
-brew "jq"
-brew "wget"
-brew "rclone"
-brew "tree"
-brew "docker"
-brew "miniforge"
-
-#R
+#Programming languages 
 #brew "r"
+brew "miniforge" #minicoda built for new archs & pins conda-forge as default package 
 
 #apps
 cask "openrefine"
