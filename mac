@@ -159,7 +159,7 @@ brew "coreutils"
 
 #Programming languages 
 #brew "r"
-brew "miniforge" #minicoda built for new archs & pins conda-forge as default package 
+cask "miniforge" #minicoda built for new archs & pins conda-forge as default package 
 
 #apps
 cask "openrefine"
