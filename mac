@@ -164,8 +164,8 @@ cask "miniconda"
 #apps
 cask "openrefine"
 cask "iterm2"
-cask "firefox"
-cask "google-chrome"
+#cask "firefox"
+#cask "google-chrome"
 cask "docker"
 EOF
 
