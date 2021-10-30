@@ -158,7 +158,7 @@ brew "libyaml" # should come after openssl
 brew "coreutils"
 
 #Programming languages 
-#brew "r"
+brew "r"
 cask "miniconda"
 
 #apps
@@ -167,6 +167,7 @@ cask "iterm2"
 #cask "firefox"
 #cask "google-chrome"
 cask "docker"
+cask rstudio
 EOF
 
 #fancy_echo "Updating Brew Casks"
