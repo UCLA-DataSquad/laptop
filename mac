@@ -167,7 +167,7 @@ cask "iterm2"
 #cask "firefox"
 #cask "google-chrome"
 cask "docker"
-cask rstudio
+cask "rstudio"
 EOF
 
 #fancy_echo "Updating Brew Casks"
