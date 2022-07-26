@@ -145,7 +145,6 @@ brew "jq"
 brew "wget"
 brew "rclone"
 brew "tree"
-brew "docker"
 
 # GitHub
 brew "gh"
@@ -167,6 +166,7 @@ cask "iterm2"
 #cask "firefox"
 #cask "google-chrome"
 cask "docker"
+brew "docker"
 cask "rstudio"
 EOF
 
