@@ -189,6 +189,7 @@ brew cleanup
 #fi
 
 #conda install -y csvkit
+conda init "$(basename "${SHELL}")"
 conda update -y conda
 #conda update -y anaconda
 
