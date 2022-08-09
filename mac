@@ -158,7 +158,7 @@ brew "coreutils"
 
 #Programming languages 
 brew "r"
-cask "miniconda"
+cask "anaconda"
 
 #apps
 cask "openrefine"
