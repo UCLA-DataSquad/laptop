@@ -71,7 +71,7 @@ Debugging
 Your last Laptop run will be saved to `~/laptop.log`.
 Read through it to see if you can debug the issue yourself.
 If not, copy the lines where the script failed into a
-[new GitHub Issue](https://github.com/thoughtbot/laptop/issues/new) for us.
+[new GitHub Issue](https://github.com/UCLA-DataSquad/laptop/issues/new) for us.
 Or, attach the whole log file as an attachment.
 
 What it sets up
@@ -93,13 +93,11 @@ Unix tools:
 * [Watchman] for watching for filesystem events
 * [Zsh] as your shell
 * [rlwrap] readline wrapper
-* [pandoc] markup converter
 * [tree]  lists contents of directory in a tree like structure
 * [jq] JSON parser 
 * [wget] network downloader 
 * [rclone] cloud storage data synch 
-* [awscli] amazon command line 
-* [docker] cli for containers 
+* [docker] container runtime (Docker Desktop, includes CLI + GUI)
 
 [Universal Ctags]: https://ctags.io/
 [Git]: https://git-scm.com/
@@ -109,13 +107,11 @@ Unix tools:
 [Tmux]: http://tmux.github.io/
 [Watchman]: https://facebook.github.io/watchman/
 [rlwrap]: https://linux.die.net/man/1/rlwrap
-[pandoc]: https://pandoc.org
 [tree]: https://linux.die.net/man/1/tree
 [jq]: https://stedolan.github.io/jq/
 [wget]: https://www.geeksforgeeks.org/wget-command-in-linux-unix/
 [rclone]: https://rclone.org
-[awscli]: https://aws.amazon.com/cli/
-[docker]: https://docs.docker.com/engine/reference/commandline/cli/
+[docker]: https://www.docker.com/products/docker-desktop/
 
 * [GitHub CLI] for interacting with the GitHub API
 
@@ -125,26 +121,25 @@ Image tools:
 
 * [ImageMagick] for cropping and resizing images
 
-Languages: 
+Languages and editors:
 
-* [R] - Base r installed via homebrew 
-* [Anaconda Python] - Python distribution for scientific computing, this is installed using the bash installer 
+* [R] - Base R installed via Homebrew
+* [RStudio] - R IDE
+* [Miniforge] - conda-forge-based Python/conda distribution (follows [The Carpentries' 2025 setup recommendation](https://carpentries.org/blog/2025/03/lesson-setup-instructions-task-force-recommendations/) to move off Anaconda)
+* [VSCodium] - Python/shell/git editor (VS Code without Microsoft branding/telemetry), also per The Carpentries' 2025 recommendation
+* [Node.js] - JavaScript runtime + npm, for working in the Astro/Jekyll/Hugo site repos across DSC (Astro/Jekyll/Hugo themselves are scaffolded per-project via `npm`/`bundler`, not installed globally)
+* [Quarto] - scientific and technical publishing system used for DSC reports, slides, and stats
 
-Databases:
-
-* [Postgres] for storing relational data
-* [Redis] for storing key-value data
-
-[Postgres]: http://www.postgresql.org/
-[Redis]: http://redis.io/
-
-
+[R]: https://www.r-project.org/
+[RStudio]: https://posit.co/products/open-source/rstudio/
+[Miniforge]: https://github.com/conda-forge/miniforge
+[VSCodium]: https://vscodium.com/
+[Node.js]: https://nodejs.org/
+[Quarto]: https://quarto.org/
 
 It should take less than 15 minutes to install (depends on your machine).
 
-
-
-See the [wiki](https://github.com/thoughtbot/laptop/wiki)
+See the [wiki](https://github.com/UCLA-DataSquad/laptop/wiki)
 for more customization examples.
 
 Contributing

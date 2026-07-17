@@ -6,9 +6,12 @@ jobs:
   build:
 
     runs-on: macOS-latest
-    
+
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - name: Execute full install
-      run: sh mac 2>&1 | tee ~/laptop.log
+      shell: bash
+      run: |
+        set -o pipefail
+        sh mac 2>&1 | tee ~/laptop.log
 
