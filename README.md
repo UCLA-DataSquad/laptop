@@ -93,10 +93,14 @@ Unix tools:
 * [Watchman] for watching for filesystem events
 * [Zsh] as your shell
 * [rlwrap] readline wrapper
+* [pandoc] markup converter (also used under the hood by Quarto)
 * [tree]  lists contents of directory in a tree like structure
 * [jq] JSON parser 
+* [yq] YAML/XML processor, same idea as jq -- used on `project-registry.yaml`, Carpentries lesson `config.yaml`, and GitHub workflow files
 * [wget] network downloader 
 * [rclone] cloud storage data synch 
+* [git-lfs] Git support for large data files
+* [xan] fast CSV toolkit for data work
 * [docker] container runtime (Docker Desktop, includes CLI + GUI)
 
 [Universal Ctags]: https://ctags.io/
@@ -107,10 +111,14 @@ Unix tools:
 [Tmux]: http://tmux.github.io/
 [Watchman]: https://facebook.github.io/watchman/
 [rlwrap]: https://linux.die.net/man/1/rlwrap
+[pandoc]: https://pandoc.org
 [tree]: https://linux.die.net/man/1/tree
 [jq]: https://stedolan.github.io/jq/
+[yq]: https://github.com/mikefarah/yq
 [wget]: https://www.geeksforgeeks.org/wget-command-in-linux-unix/
 [rclone]: https://rclone.org
+[git-lfs]: https://git-lfs.com/
+[xan]: https://github.com/medialab/xan
 [docker]: https://www.docker.com/products/docker-desktop/
 
 * [GitHub CLI] for interacting with the GitHub API
@@ -137,6 +145,13 @@ Languages and editors:
 [Node.js]: https://nodejs.org/
 [Quarto]: https://quarto.org/
 
+Linting / repo maintenance:
+
+* [ShellCheck] for shell script linting (used on `mac` itself, see Contributing below)
+* [yamllint] for YAML linting
+
+[yamllint]: https://yamllint.readthedocs.io/
+
 It should take less than 15 minutes to install (depends on your machine).
 
 See the [wiki](https://github.com/UCLA-DataSquad/laptop/wiki)
@@ -147,10 +162,10 @@ Contributing
 
 1. Edit the `mac` file.
 2. Document in the `README.md` file.
-3. Follow shell style guidelines by using [ShellCheck] and [Syntastic].
+3. Follow shell style guidelines by using [ShellCheck] and [Syntastic]. `shellcheck` is installed by `mac` itself (see above), so if you've already run the script once you have it:
 
 ```sh
-brew install shellcheck
+shellcheck -s sh mac
 ```
 
 [ShellCheck]: http://www.shellcheck.net/about.html
