@@ -103,11 +103,14 @@ brew "xz"
 brew "libxt" 
 brew "cairo"
 brew "rlwrap"
-#brew "pandoc"
+brew "pandoc"
 brew "tree"
 brew "jq"
+brew "yq"
 brew "wget"
 brew "rclone"
+brew "git-lfs"
+brew "xan"
 
 # GitHub
 brew "gh"
@@ -118,6 +121,10 @@ brew "imagemagick"
 # Programming language prerequisites and package managers
 brew "libyaml" # should come after openssl
 brew "coreutils"
+
+# Linting / repo maintenance
+brew "shellcheck"
+brew "yamllint"
 
 #Programming languages
 brew "r"
@@ -145,6 +152,9 @@ brew cleanup
 fancy_echo "Setting up Miniforge conda ..."
 conda init "$(basename "${SHELL}")"
 conda update -y conda
+
+fancy_echo "Setting up git-lfs ..."
+git lfs install
 
 # uncomment if you want to create and run your own local additions to this script
 #if [ -f ".laptop.local" ]; then
