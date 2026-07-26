@@ -85,13 +85,16 @@ macOS tools:
 
 Unix tools:
 
-* [Universal Ctags] for indexing files for vim tab completion
+* [Universal Ctags] for indexing files for vim tab completion (built from HEAD)
 * [Git] for version control
 * [OpenSSL] for Transport Layer Security (TLS)
+* [RCM] dotfiles management (thoughtbot template default; under review — see Known Issues)
+* [reattach-to-user-namespace] tmux/pasteboard integration shim (thoughtbot template default; under review — see Known Issues)
 * [The Silver Searcher] for finding things in files
 * [Tmux] for saving project state and switching between projects
 * [Watchman] for watching for filesystem events
 * [Zsh] as your shell
+* gcc, xz, libxt, cairo, libyaml, coreutils — build/library dependencies pulled in for R and other formulae (thoughtbot template defaults; under review — see Known Issues)
 * [rlwrap] readline wrapper
 * [pandoc] markup converter (also used under the hood by Quarto)
 * [tree]  lists contents of directory in a tree like structure
@@ -107,6 +110,7 @@ Unix tools:
 [Git]: https://git-scm.com/
 [OpenSSL]: https://www.openssl.org/
 [RCM]: https://github.com/thoughtbot/rcm
+[reattach-to-user-namespace]: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 [The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
 [Tmux]: http://tmux.github.io/
 [Watchman]: https://facebook.github.io/watchman/
@@ -128,6 +132,14 @@ Unix tools:
 Image tools:
 
 * [ImageMagick] for cropping and resizing images
+
+Apps:
+
+* [OpenRefine] for cleaning and transforming messy data
+* [iTerm2] terminal emulator
+
+[OpenRefine]: https://openrefine.org/
+[iTerm2]: https://iterm2.com/
 
 Languages and editors:
 
@@ -156,6 +168,19 @@ It should take less than 15 minutes to install (depends on your machine).
 
 See the [wiki](https://github.com/UCLA-DataSquad/laptop/wiki)
 for more customization examples.
+
+Known Issues
+------------
+
+This script is a fork of [thoughtbot/laptop](https://github.com/thoughtbot/laptop)
+(a general web-dev setup script), adapted over time for data science
+consulting work.
+
+Several packages marked "under review" above (`rcm`, `reattach-to-user-namespace`,
+`gcc`/`xz`/`libxt`/`cairo`/`libyaml`/`coreutils`, `universal-ctags` HEAD build,
+`vim`, `watchman`, `the_silver_searcher`) may be unused thoughtbot-template
+leftovers rather than confirmed DataSquad needs — pending an external tooling
+review before removal.
 
 Contributing
 ------------
