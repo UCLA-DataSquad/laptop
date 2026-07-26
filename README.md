@@ -85,25 +85,27 @@ macOS tools:
 
 Unix tools:
 
-* [Universal Ctags] for indexing files for vim tab completion (built from HEAD)
+* [Universal Ctags] for indexing files for vim tab completion (built from HEAD; under review — see Known Issues)
 * [Git] for version control
 * [OpenSSL] for Transport Layer Security (TLS)
 * [RCM] dotfiles management (thoughtbot template default; under review — see Known Issues)
 * [reattach-to-user-namespace] tmux/pasteboard integration shim (thoughtbot template default; under review — see Known Issues)
-* [The Silver Searcher] for finding things in files
+* [ripgrep] fast recursive code/text search (replaces the older `the_silver_searcher`)
 * [Tmux] for saving project state and switching between projects
-* [Watchman] for watching for filesystem events
+* [Watchman] for watching for filesystem events (under review — see Known Issues)
 * [Zsh] as your shell
-* gcc, xz, libxt, cairo, libyaml, coreutils — build/library dependencies pulled in for R and other formulae (thoughtbot template defaults; under review — see Known Issues)
+* [coreutils] GNU command-line utilities for BSD/macOS parity (under review — see Known Issues)
 * [rlwrap] readline wrapper
 * [pandoc] markup converter (also used under the hood by Quarto)
 * [tree]  lists contents of directory in a tree like structure
+* [tealdeer] fast `tldr` — short, example-driven command help for the CLI tools on this list
 * [jq] JSON parser 
 * [yq] YAML/XML processor, same idea as jq -- used on `project-registry.yaml`, Carpentries lesson `config.yaml`, and GitHub workflow files
 * [wget] network downloader 
 * [rclone] cloud storage data synch 
 * [git-lfs] Git support for large data files
 * [xan] fast CSV toolkit for data work
+* [duckdb] local SQL engine for querying/joining CSV, JSON, and Parquet files directly from the CLI, no server required
 * [docker] container runtime (Docker Desktop, includes CLI + GUI)
 
 [Universal Ctags]: https://ctags.io/
@@ -111,18 +113,21 @@ Unix tools:
 [OpenSSL]: https://www.openssl.org/
 [RCM]: https://github.com/thoughtbot/rcm
 [reattach-to-user-namespace]: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
-[The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
+[ripgrep]: https://github.com/BurntSushi/ripgrep
 [Tmux]: http://tmux.github.io/
 [Watchman]: https://facebook.github.io/watchman/
+[coreutils]: https://www.gnu.org/software/coreutils/
 [rlwrap]: https://linux.die.net/man/1/rlwrap
 [pandoc]: https://pandoc.org
 [tree]: https://linux.die.net/man/1/tree
+[tealdeer]: https://github.com/tealdeer-rs/tealdeer
 [jq]: https://stedolan.github.io/jq/
 [yq]: https://github.com/mikefarah/yq
 [wget]: https://www.geeksforgeeks.org/wget-command-in-linux-unix/
 [rclone]: https://rclone.org
 [git-lfs]: https://git-lfs.com/
 [xan]: https://github.com/medialab/xan
+[duckdb]: https://duckdb.org
 [docker]: https://www.docker.com/products/docker-desktop/
 
 * [GitHub CLI] for interacting with the GitHub API
@@ -133,26 +138,43 @@ Image tools:
 
 * [ImageMagick] for cropping and resizing images
 
+Geospatial:
+
+* [QGIS] desktop GIS application — added because GIS is DSC's single largest
+  consultation topic and QGIS is explicitly named in patron requests
+* [GDAL] (`ogr2ogr`, `gdalinfo`) — CLI companion to QGIS for scripted format
+  conversion and reprojection
+
+[QGIS]: https://qgis.org/
+[GDAL]: https://gdal.org/
+
 Apps:
 
 * [OpenRefine] for cleaning and transforming messy data
 * [iTerm2] terminal emulator
+* [Positron] Posit's data science IDE (R/Python/Jupyter/Quarto in one editor);
+  installed alongside RStudio and VSCodium, not a replacement for either
 
 [OpenRefine]: https://openrefine.org/
 [iTerm2]: https://iterm2.com/
+[Positron]: https://positron.posit.co/
 
 Languages and editors:
 
 * [R] - Base R installed via Homebrew
 * [RStudio] - R IDE
 * [Miniforge] - conda-forge-based Python/conda distribution (follows [The Carpentries' 2025 setup recommendation](https://carpentries.org/blog/2025/03/lesson-setup-instructions-task-force-recommendations/) to move off Anaconda)
+* [pixi] - fast, project-based Python/conda package manager, taught in DataSquad workshops
+* [uv] - fast Python package/project manager (pip/venv/poetry replacement); installed so students and staff can drop into whatever setup a researcher's own project already expects (`pyproject.toml`, `uv.lock`, `requirements.txt`)
 * [VSCodium] - Python/shell/git editor (VS Code without Microsoft branding/telemetry), also per The Carpentries' 2025 recommendation
-* [Node.js] - JavaScript runtime + npm, for working in the Astro/Jekyll/Hugo site repos across DSC (Astro/Jekyll/Hugo themselves are scaffolded per-project via `npm`/`bundler`, not installed globally)
+* [Node.js] - pinned to the Active LTS line (`node@24`), for working in the Astro/Jekyll/Hugo site repos across DSC (Astro/Jekyll/Hugo themselves are scaffolded per-project via `npm`/`bundler`, not installed globally). Unversioned `node` tracks Homebrew's Current release, which changes out from under you and isn't recommended for production.
 * [Quarto] - scientific and technical publishing system used for DSC reports, slides, and stats
 
 [R]: https://www.r-project.org/
 [RStudio]: https://posit.co/products/open-source/rstudio/
 [Miniforge]: https://github.com/conda-forge/miniforge
+[pixi]: https://pixi.sh
+[uv]: https://docs.astral.sh/uv/
 [VSCodium]: https://vscodium.com/
 [Node.js]: https://nodejs.org/
 [Quarto]: https://quarto.org/
@@ -176,11 +198,27 @@ This script is a fork of [thoughtbot/laptop](https://github.com/thoughtbot/lapto
 (a general web-dev setup script), adapted over time for data science
 consulting work.
 
-Several packages marked "under review" above (`rcm`, `reattach-to-user-namespace`,
-`gcc`/`xz`/`libxt`/`cairo`/`libyaml`/`coreutils`, `universal-ctags` HEAD build,
-`vim`, `watchman`, `the_silver_searcher`) may be unused thoughtbot-template
-leftovers rather than confirmed DataSquad needs — pending an external tooling
-review before removal.
+A July 2026 evidence-based review (`validation-prompt-tooling-2026-07-26.md`,
+cross-checked against DSC's own consultation-request data and verified against
+primary sources — Homebrew, Node.js, Astro, and Positron docs — before
+adopting) confirmed and removed several genuinely redundant/unused packages
+(`gcc`, `xz`, `cairo`, `libxt`, `libyaml` — either transitive dependencies of
+`r` already, or depended on by nothing installed here) and added tools backed
+by real demand (`qgis`, `gdal`, `tableau`-adjacent GIS/viz gap; `duckdb`,
+`ripgrep`, `tealdeer`). One caveat from that review: an external
+keyword-frequency claim that R now outranks Python in consultation requests
+could not be reproduced from the underlying data (the merged consultation
+dataset blends real patron intake with Trello project-card text duplicated
+once per comment, which distorts any raw frequency count) — treat any future
+frequency claim from this dataset with that in mind.
+
+Still marked "under review," pending a decision (not yet confirmed either
+way): `rcm`, `reattach-to-user-namespace`, `universal-ctags` HEAD build,
+`vim`, `watchman`, `coreutils`. Also open: whether to add `tableau-public`
+(real demand, but Tableau Public auto-publishes saved workbooks to a public
+gallery by default — needs a documented opt-in rather than a silent install
+given patron-data handling) and whether to pilot `jamovi` as a gentler
+stats-GUI on-ramp for students.
 
 Contributing
 ------------
