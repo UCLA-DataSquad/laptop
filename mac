@@ -69,12 +69,8 @@ esac
 if ! command -v brew >/dev/null; then
   fancy_echo "Installing Homebrew ..."
     /bin/bash -c \
-      "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    append_to_zshrc '# recommended by brew doctor'
-
-    # shellcheck disable=SC2016
-    #append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
     echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile
     eval $(/opt/homebrew/bin/brew shellenv)
 
@@ -85,7 +81,6 @@ fancy_echo "Updating Homebrew formulae ..."
 brew update --force # https://github.com/Homebrew/brew/issues/1151
 brew bundle --file=- <<EOF
 tap "universal-ctags/universal-ctags"
-tap "buo/cask-upgrade"
 
 # Unix
 brew "universal-ctags", args: ["HEAD"]
@@ -93,24 +88,22 @@ brew "git"
 brew "openssl"
 brew "rcm"
 brew "reattach-to-user-namespace"
-brew "the_silver_searcher"
+brew "ripgrep" # replaces the_silver_searcher: actively maintained, faster, no functionality gap
 brew "tmux"
 brew "vim"
 brew "watchman"
 brew "zsh"
-brew "gcc" 
-brew "xz" 
-brew "libxt" 
-brew "cairo"
 brew "rlwrap"
 brew "pandoc"
 brew "tree"
+brew "tealdeer" # tldr command: short example-driven help for the CLI tools below
 brew "jq"
 brew "yq"
 brew "wget"
 brew "rclone"
 brew "git-lfs"
 brew "xan"
+brew "duckdb" # local SQL engine for querying/joining CSV, JSON, Parquet directly from the CLI
 
 # GitHub
 brew "gh"
@@ -118,8 +111,10 @@ brew "gh"
 # Image manipulation
 brew "imagemagick"
 
-# Programming language prerequisites and package managers
-brew "libyaml" # should come after openssl
+# Geospatial
+brew "gdal" # ogr2ogr/gdalinfo; CLI companion to QGIS below for scripted format conversion/reprojection
+
+# GNU utilities (BSD/macOS command parity)
 brew "coreutils"
 
 # Linting / repo maintenance
@@ -128,12 +123,16 @@ brew "yamllint"
 
 #Programming languages
 brew "r"
-brew "node" # provides node + npm; Astro/Jekyll/Hugo site tooling is scaffolded per-project via npm/bundler, not installed globally
+brew "node@24" # pinned to Active LTS; unversioned "node" tracks Homebrew's Current release (26 as of 2026-07), a moving target not recommended for production
+brew "pixi" # Python packaging, taught in DataSquad workshops
+brew "uv" # fast Python package/project manager, increasingly what researchers' own pyproject.toml/requirements.txt setups expect
 cask "miniforge"
 
 #apps
 cask "openrefine"
 cask "iterm2"
+cask "positron" # Posit's data science IDE (R/Python/Jupyter/Quarto); alongside RStudio/VSCodium, not a replacement
+cask "qgis" # GIS is DSC's single largest consultation topic; QGIS named explicitly in patron requests
 #cask "firefox"
 #cask "google-chrome"
 cask "docker-desktop"
@@ -142,9 +141,8 @@ cask "vscodium"
 cask "quarto"
 EOF
 
-#fancy_echo "Updating Brew Casks"
-
-#brew cu -a
+fancy_echo "Linking node@24 (keg-only) ..."
+brew link --force node@24
 
 fancy_echo "Cleaning up old Homebrew formulae ..."
 brew cleanup
