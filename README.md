@@ -230,6 +230,40 @@ Linting / repo maintenance:
 
 [yamllint]: https://yamllint.readthedocs.io/
 
+OSPO / RSE tooling — DataSquad students increasingly work as OSPO assistants
+on the software-curation side of open source program office work (license
+compliance, citation/publishing, security posture), so these are installed
+alongside the general toolchain rather than assumed to be looked up later:
+
+* [pre-commit] manages multi-language git hooks (formatting, linting, secret
+  scanning) from a single `.pre-commit-config.yaml` per repo
+* [Copier] scaffolds a new repo from a template (tests, CI, docs, licensing,
+  community files) and can reapply template updates to existing repos later
+* [REUSE] SPDX-based license/copyright compliance; `reuse lint` catches
+  missing or inconsistent license headers
+* [OSV-Scanner] scans a repo's lockfiles/manifests against the OSV
+  vulnerability database
+* [zizmor] static analysis for GitHub Actions/Dependabot workflow configs;
+  catches insecure CI setups (overly broad permissions, unpinned actions)
+* [OpenSSF Scorecard] runnable locally, not just as a GitHub Action; checks a
+  repo's CI practices, code review requirements, pinned dependencies, and
+  other security posture signals
+
+More specialized OSPO/RSE tooling (repository templates built with the above,
+OpenSSF Scorecard as a CI check, `howfairis`/FAIR assessment, ScanCode
+Toolkit for auditing inherited codebases, CodeMeta, workflow engines like
+Snakemake/Nextflow, portfolio-health metrics via CHAOSS) is documented
+separately in DataSquad's own OSPO-assistant documentation rather than
+installed universally here — not everything on that list belongs on every
+laptop.
+
+[pre-commit]: https://pre-commit.com/
+[Copier]: https://copier.readthedocs.io/
+[REUSE]: https://reuse.software/
+[OSV-Scanner]: https://google.github.io/osv-scanner/
+[zizmor]: https://woodruffw.github.io/zizmor/
+[OpenSSF Scorecard]: https://github.com/ossf/scorecard
+
 See the [wiki](https://github.com/UCLA-DataSquad/laptop/wiki)
 for more customization examples.
 

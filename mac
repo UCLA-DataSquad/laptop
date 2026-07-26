@@ -121,6 +121,14 @@ brew "coreutils"
 brew "shellcheck"
 brew "yamllint"
 
+# OSPO / RSE tooling (for DataSquad students working as OSPO assistants)
+brew "pre-commit" # manages multi-language git hooks (lint/format/secret-scan) from one config per repo
+brew "copier" # scaffolds new repos from a template (README/CI/tests/licensing) and reapplies template updates later
+brew "reuse" # REUSE tool: SPDX license/copyright compliance; 'reuse lint' catches missing license headers
+brew "osv-scanner" # scans a repo's lockfiles/manifests against the OSV vulnerability database
+brew "zizmor" # static analysis for GitHub Actions/Dependabot configs, catches insecure CI setups
+brew "scorecard" # OpenSSF Scorecard, runnable locally: checks CI, review practices, pinned deps, etc.
+
 #Programming languages
 brew "r"
 brew "node@24" # pinned to Active LTS; unversioned "node" tracks Homebrew's Current release (26 as of 2026-07), a moving target not recommended for production
