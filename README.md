@@ -1,39 +1,76 @@
 [![Smoke Test CI](https://github.com/UCLA-DataSquad/laptop/actions/workflows/smoke.yml/badge.svg)](https://github.com/UCLA-DataSquad/laptop/actions/workflows/smoke.yml)
 
-DSC - DataSquad Laptop Setup (for MacBook)
-======
+# DataSquad Laptop Setup
 
-**Laptop** is a script to set up a macOS laptop for data science tools for DSC staff & Data Squad.
+A one-command macOS setup script that turns a fresh MacBook into a working
+data science consulting environment for the UCLA Library Data Science Center
+(DSC) and its student consultant program, DataSquad.
 
-* It can be run multiple times on the same machine safely.
-* It installs, upgrades, or skips packages
-based on what is already installed on the machine.
+## Contents
 
+- [Why this exists](#why-this-exists)
+- [How it works](#how-it-works)
+- [Requirements](#requirements)
+- [Install](#install)
+- [Debugging](#debugging)
+- [What it sets up](#what-it-sets-up)
+- [Known Issues](#known-issues)
+- [Contributing](#contributing)
+- [License](#license)
 
-Requirements
-------------
+## Why this exists
 
-This script supports:
+Every academic term, DSC onboards new DataSquad student consultants and
+occasionally new staff, each of whom needs the same working set of tools
+before they can help a researcher clean a dataset, build a map, or debug an R
+script. Recreating that setup by hand from memory or an out-of-date wiki page
+is slow, inconsistent between machines, and silently drifts from what the
+job actually requires.
 
-* macOS Big Sur (11.2) - Apple Silicon 
+This script exists to make that setup **reproducible and versioned**: the
+toolchain is defined once, in code, and installing or catching up a machine
+is a single command instead of a checklist. It started as a fork of
+[thoughtbot/laptop](https://github.com/thoughtbot/laptop), a well-tested
+general web-dev setup script, and has been adapted over time for a data
+science *consulting* audience rather than a Rails shop.
 
-To make backward compatable we need to add some logic to test for architecture. 
+As of July 2026, the tool list is no longer just inherited thoughtbot
+defaults — it's reviewed against **what DSC consultations actually ask for**.
+Real consultation-request data showed GIS work as the single largest
+consulting topic and Tableau as a frequently named tool, for example, neither
+of which had any supporting software installed until that review. See
+[Known Issues](#known-issues) for the full methodology and what's still
+pending a decision.
 
-NOTE: Homebrew installs to `/opt/homebrew` on Apple Silicon rather than `/usr/local` so `HOMEBREW_PREFIX` probably needs to be dependant on the architecture. see: <https://github.com/thoughtbot/laptop/issues/589>
+## How it works
 
-* macOS Mavericks (10.9)
-* macOS Yosemite (10.10)
-* macOS El Capitan (10.11)
-* macOS Sierra (10.12)
-* macOS High Sierra (10.13)
-* macOS Mojave (10.14)
-* macOS Catalina (10.15)
+- **Idempotent**: safe to run repeatedly. It installs, upgrades, or skips
+  each package based on what's already on the machine, so re-running it after
+  a few months to catch a laptop up to the current tool list is normal usage,
+  not a special "repair" mode.
+- **One source of truth**: the entire package list lives in a single
+  `brew bundle` block inside `mac` — no separate Brewfile to keep in sync,
+  no tribal knowledge about what else to `brew install` by hand afterward.
+- **Tested on every change**: a GitHub Actions workflow
+  (`.github/workflows/smoke.yml`) runs the full script on a real,
+  GitHub-hosted macOS runner for every push and PR, so a broken tap or a
+  typo'd formula name fails CI instead of failing on a new hire's first day.
+- **Evidence over assumption**: package additions and removals are expected
+  to point at a reason — a documented DSC need, a verified dependency
+  relationship (`brew deps`/`brew uses`), or real consultation-request
+  volume — not just "this seemed useful." See [Known Issues](#known-issues)
+  for the review trail.
 
-Older versions may work but aren't tested.
-Bug reports for older versions are welcome.
+## Requirements
 
-To Install
--------
+Apple Silicon Macs running a current macOS release. The script has not been
+tested on Intel Macs or on macOS versions predating Apple Silicon, and no
+compatibility work is planned for those (DSC issues Apple Silicon MacBooks
+exclusively). Homebrew installs to `/opt/homebrew` on Apple Silicon rather
+than `/usr/local`; the script accounts for this directly rather than trying
+to detect architecture.
+
+## Install
 
 Download the script:
 
@@ -53,7 +90,9 @@ Execute the downloaded script:
 sh mac 2>&1 | tee ~/laptop.log
 ```
 
-You'll need to use your laptop password. If it's the first time running this script, it will trigger an installation of Xcode and you will need to hit return. 
+You'll need to use your laptop password. If it's the first time running this
+script, it will trigger an installation of Xcode and you will need to hit
+return.
 
 Optionally, review the log:
 
@@ -65,17 +104,19 @@ Optionally, [install thoughtbot/dotfiles][dotfiles].
 
 [dotfiles]: https://github.com/thoughtbot/dotfiles#install
 
-Debugging
----------
+It should take less than 15 minutes to install on a fresh machine (depends on
+your machine and network). Re-running it later to pick up new tools is much
+faster, since already-installed packages are skipped.
 
-Your last Laptop run will be saved to `~/laptop.log`.
+## Debugging
+
+Your last run will be saved to `~/laptop.log`.
 Read through it to see if you can debug the issue yourself.
 If not, copy the lines where the script failed into a
 [new GitHub Issue](https://github.com/UCLA-DataSquad/laptop/issues/new) for us.
 Or, attach the whole log file as an attachment.
 
-What it sets up
----------------
+## What it sets up
 
 macOS tools:
 
@@ -116,6 +157,7 @@ Unix tools:
 [ripgrep]: https://github.com/BurntSushi/ripgrep
 [Tmux]: http://tmux.github.io/
 [Watchman]: https://facebook.github.io/watchman/
+[Zsh]: https://www.zsh.org/
 [coreutils]: https://www.gnu.org/software/coreutils/
 [rlwrap]: https://linux.die.net/man/1/rlwrap
 [pandoc]: https://pandoc.org
@@ -137,6 +179,8 @@ Unix tools:
 Image tools:
 
 * [ImageMagick] for cropping and resizing images
+
+[ImageMagick]: https://imagemagick.org/
 
 Geospatial:
 
@@ -186,13 +230,10 @@ Linting / repo maintenance:
 
 [yamllint]: https://yamllint.readthedocs.io/
 
-It should take less than 15 minutes to install (depends on your machine).
-
 See the [wiki](https://github.com/UCLA-DataSquad/laptop/wiki)
 for more customization examples.
 
-Known Issues
-------------
+## Known Issues
 
 This script is a fork of [thoughtbot/laptop](https://github.com/thoughtbot/laptop)
 (a general web-dev setup script), adapted over time for data science
@@ -220,11 +261,11 @@ gallery by default — needs a documented opt-in rather than a silent install
 given patron-data handling) and whether to pilot `jamovi` as a gentler
 stats-GUI on-ramp for students.
 
-Contributing
-------------
+## Contributing
 
 1. Edit the `mac` file.
-2. Document in the `README.md` file.
+2. Document in the `README.md` file — say *why*, not just *what*, if you're
+   adding or removing a package (see [Why this exists](#why-this-exists)).
 3. Follow shell style guidelines by using [ShellCheck] and [Syntastic]. `shellcheck` is installed by `mac` itself (see above), so if you've already run the script once you have it:
 
 ```sh
@@ -245,12 +286,11 @@ you agree to abide by the thoughtbot [code of conduct].
 
 [code of conduct]: https://thoughtbot.com/open-source-code-of-conduct
 
-License
--------
+## License
 
-Laptop is © 2011-2020 thoughtbot, inc.
-It is free software,
-and may be redistributed under the terms specified in the [LICENSE] file.
+This repository is a fork of [thoughtbot/laptop](https://github.com/thoughtbot/laptop)
+and retains thoughtbot's original MIT license, per the terms of that license
+(copyright 2011-2020 thoughtbot, inc.) — see the [LICENSE] file. UCLA DSC's
+changes on top of the original are contributed under the same license.
 
 [LICENSE]: LICENSE
-
