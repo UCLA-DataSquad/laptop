@@ -80,18 +80,12 @@ fi
 fancy_echo "Updating Homebrew formulae ..."
 brew update --force # https://github.com/Homebrew/brew/issues/1151
 brew bundle --file=- <<EOF
-tap "universal-ctags/universal-ctags"
-
 # Unix
-brew "universal-ctags", args: ["HEAD"]
 brew "git"
 brew "openssl"
-brew "rcm"
-brew "reattach-to-user-namespace"
 brew "ripgrep" # replaces the_silver_searcher: actively maintained, faster, no functionality gap
 brew "tmux"
 brew "vim"
-brew "watchman"
 brew "zsh"
 brew "rlwrap"
 brew "pandoc"
@@ -113,9 +107,6 @@ brew "imagemagick"
 
 # Geospatial
 brew "gdal" # ogr2ogr/gdalinfo; CLI companion to QGIS below for scripted format conversion/reprojection
-
-# GNU utilities (BSD/macOS command parity)
-brew "coreutils"
 
 # Linting / repo maintenance
 brew "shellcheck"

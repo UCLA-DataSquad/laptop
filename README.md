@@ -126,16 +126,11 @@ macOS tools:
 
 Unix tools:
 
-* [Universal Ctags] for indexing files for vim tab completion (built from HEAD; under review — see Known Issues)
 * [Git] for version control
 * [OpenSSL] for Transport Layer Security (TLS)
-* [RCM] dotfiles management (thoughtbot template default; under review — see Known Issues)
-* [reattach-to-user-namespace] tmux/pasteboard integration shim (thoughtbot template default; under review — see Known Issues)
 * [ripgrep] fast recursive code/text search (replaces the older `the_silver_searcher`)
 * [Tmux] for saving project state and switching between projects
-* [Watchman] for watching for filesystem events (under review — see Known Issues)
 * [Zsh] as your shell
-* [coreutils] GNU command-line utilities for BSD/macOS parity (under review — see Known Issues)
 * [rlwrap] readline wrapper
 * [pandoc] markup converter (also used under the hood by Quarto)
 * [tree]  lists contents of directory in a tree like structure
@@ -149,16 +144,11 @@ Unix tools:
 * [duckdb] local SQL engine for querying/joining CSV, JSON, and Parquet files directly from the CLI, no server required
 * [docker] container runtime (Docker Desktop, includes CLI + GUI)
 
-[Universal Ctags]: https://ctags.io/
 [Git]: https://git-scm.com/
 [OpenSSL]: https://www.openssl.org/
-[RCM]: https://github.com/thoughtbot/rcm
-[reattach-to-user-namespace]: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 [ripgrep]: https://github.com/BurntSushi/ripgrep
 [Tmux]: http://tmux.github.io/
-[Watchman]: https://facebook.github.io/watchman/
 [Zsh]: https://www.zsh.org/
-[coreutils]: https://www.gnu.org/software/coreutils/
 [rlwrap]: https://linux.die.net/man/1/rlwrap
 [pandoc]: https://pandoc.org
 [tree]: https://linux.die.net/man/1/tree
@@ -287,13 +277,25 @@ dataset blends real patron intake with Trello project-card text duplicated
 once per comment, which distorts any raw frequency count) — treat any future
 frequency claim from this dataset with that in mind.
 
-Still marked "under review," pending a decision (not yet confirmed either
-way): `rcm`, `reattach-to-user-namespace`, `universal-ctags` HEAD build,
-`vim`, `watchman`, `coreutils`. Also open: whether to add `tableau-public`
-(real demand, but Tableau Public auto-publishes saved workbooks to a public
-gallery by default — needs a documented opt-in rather than a silent install
-given patron-data handling) and whether to pilot `jamovi` as a gentler
-stats-GUI on-ramp for students.
+An October 2026 follow-up resolved the packages left "under review." Dropped:
+`rcm` and `reattach-to-user-namespace` (thoughtbot template leftovers; nothing
+here uses them), the `universal-ctags` HEAD build and its tap (built for vim
+tag-jumping; VSCodium is the documented editor), `watchman` (built for JS
+tooling; this group builds R, Python, and static sites), and `coreutils` (GNU
+parity nobody here depends on, and a source of confusing flag differences if
+it ever lands first on the PATH). Kept: `vim`, since the macOS system vim is
+old and a current one is useful for git commits and SSH sessions.
+
+Rejected: piloting `jamovi` (no consultation-demand evidence; R and RStudio are
+already installed). Revisit if consultants report students who need a
+point-and-click stats tool.
+
+Optional, not installed by the script: `tableau-public`. Tableau is the
+4th-most-named tool in consultations (4.7%), but Tableau Public publishes
+saved workbooks to a public gallery by default, which is a real risk with
+patron data. Install it deliberately with
+`brew install --cask tableau-public`, and save workbooks locally rather than
+to the public gallery.
 
 ## Contributing
 
